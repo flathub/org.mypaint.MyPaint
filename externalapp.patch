@@ -1,0 +1,70 @@
+diff --git a/gui/externalapp.py b/gui/externalapp.py
+index 3a7e635..9604f6a 100644
+--- a/gui/externalapp.py
++++ b/gui/externalapp.py
+@@ -257,60 +257,11 @@ class LayerEditManager (object):
+             ))
+ 
+     def _begin_file_edit_using_gio(self, file_path, layer):
+-        logger.info("Using OpenWithDialog and GIO to open %r", file_path)
+-        logger.debug("Querying file path for info")
+-        file = Gio.File.new_for_path(file_path)
+-        logger.info("file_new_for_path => %r", file)
+-        flags = Gio.FileQueryInfoFlags.NONE
+-        attr = Gio.FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE
+-        file_info = file.query_info(attr, flags, None)
+-        logger.info("file.query_info() => %r", file_info)
+-        file_type = file_info.get_attribute_string(attr)
+-        logger.info("file_info.get_attribute_string() => %r", file_info)
+-
+-        logger.debug("Creating and launching external layer edit dialog")
+-        dialog = OpenWithDialog(file_type, specific_file=True)
+-        dialog.set_modal(True)
+-        dialog.set_transient_for(self._doc.app.drawWindow)
+-        dialog.set_position(Gtk.WindowPosition.CENTER)
+-        response = dialog.run()
+-        dialog.destroy()
+-        if response != Gtk.ResponseType.OK:
+-            self._doc.app.show_transient_message(
+-                _LAUNCH_CANCELLED_MSG.format(
+-                    layer_name=layer.name,
+-                ))
+-            return
+-        appinfo = dialog.selected_appinfo
+-        assert appinfo is not None
+-
+-        disp = self._doc.tdw.get_display()
+-        launch_ctx = disp.get_app_launch_context()
+-
+-        logger.debug(
+-            "Launching %r with %r (user-chosen app for %r)",
+-            appinfo.get_name(),
+-            file_path,
+-            file_type,
+-        )
+-        launched_app = appinfo.launch([file], launch_ctx)
+-        if not launched_app:
+-            self._doc.app.show_transient_message(
+-                _LAUNCH_FAILED_MSG.format(
+-                    app_name=appinfo.get_name(),
+-                    layer_name=layer.name,
+-                ))
+-            logger.error(
+-                "Failed to launch %r with %r",
+-                appinfo.get_name(),
+-                file_path,
+-                )
+-            return
+-        self._doc.app.show_transient_message(
+-            _LAUNCH_SUCCESS_MSG.format(
+-                app_name=appinfo.get_name(),
+-                layer_name=layer.name,
+-            ))
++        import application
++        file_url = "file://" + file_path
++        app = application.get_app()
++        logger.info("Using show_uri_on_window to open %r", file_url)
++        Gtk.show_uri_on_window(app.drawWindow, file_url, Gdk.CURRENT_TIME)
+ 
+     def _begin_file_monitoring_using_gio(self, file_path, layer):
+         self._cleanup_stale_monitors(added_layer=layer)

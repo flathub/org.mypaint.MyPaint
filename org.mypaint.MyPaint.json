@@ -95,6 +95,10 @@
                         "url": "https://github.com/mypaint/mypaint.git",
                         "branch": "v1.2.1",
                         "commit": "bcf5a28d38bbd586cc9d4cee223f849fa303864f"
+                    },
+                    {
+                        "type": "patch",
+                        "path": "externalapp.patch"
                     }
             ],
             "build-commands": [
