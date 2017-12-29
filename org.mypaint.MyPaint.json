@@ -11,7 +11,8 @@
     "finish-args": [
         "--share=ipc",
         "--socket=x11",
-        "--filesystem=home"
+        "--filesystem=home",
+        "--talk-name=ca.desrt.dconf"
     ],
     "modules": [
         {
