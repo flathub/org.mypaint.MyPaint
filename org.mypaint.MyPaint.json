@@ -1,7 +1,7 @@
 {
     "app-id": "org.mypaint.MyPaint",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.24",
+    "runtime-version": "3.30",
     "sdk": "org.gnome.Sdk",
     "command": "mypaint",
     "rename-desktop-file": "mypaint.desktop",
@@ -13,22 +13,17 @@
         "--socket=x11",
         "--filesystem=home",
         "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
-        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"    
+        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
     "modules": [
         {
-            "name": "scons",
-            "cleanup": [ "*" ],
-            "buildsystem": "simple",
+            "name": "json-c",
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://downloads.sourceforge.net/project/scons/scons/2.5.1/scons-2.5.1.tar.gz",
-                    "sha256": "0b25218ae7b46a967db42f2a53721645b3d42874a65f9552ad16ce26d30f51f2"
+                    "url": "https://github.com/json-c/json-c/archive/json-c-0.13.1-20180305.tar.gz",
+                    "sha256": "5d867baeb7f540abe8f3265ac18ed7a24f91fe3c5f4fd99ac3caba0708511b90"
                 }
-            ],
-            "build-commands": [
-                "python setup.py install --prefix=/app"
             ]
         },
         {
@@ -44,13 +39,24 @@
             ]
         },
         {
+            "name": "libmypaint",
+            "sources": [
+                    {
+                        "type": "git",
+                        "url": "https://github.com/mypaint/libmypaint",
+                        "branch": "master",
+                        "sha256": "91f0a81dfc8f289bea7565b8230cd762c45b301c"
+                    }
+            ]
+        },
+        {
             "name": "numpy",
             "buildsystem": "simple",
             "sources": [
                     {
                         "type": "archive",
-                        "url": "https://downloads.sourceforge.net/project/numpy/NumPy/1.11.2/numpy-1.11.2.tar.gz",
-                        "sha256": "04db2fbd64e2e7c68e740b14402b25af51418fc43a59d9e54172b38b906b0f69"
+                        "url": "https://github.com/numpy/numpy/releases/download/v1.14.3/numpy-1.14.3.tar.gz",
+                        "sha256": "cfcfc7a9a8ba4275c60a815c683d59ac5e7aa9362d76573b6cc4324ffb1235fa"
                     }
             ],
             "build-commands": [
@@ -104,8 +110,8 @@
                     }
             ],
             "build-commands": [
-                "scons",
-                "scons prefix=/app install"
+                "python2 setup.py build",
+                "python2 setup.py managed_install --prefix /app"
             ]
         }
     ]
