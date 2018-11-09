@@ -17,6 +17,21 @@
     ],
     "modules": [
         {
+            "name": "scons",
+            "cleanup": [ "*" ],
+            "buildsystem": "simple",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://downloads.sourceforge.net/project/scons/scons/2.5.1/scons-2.5.1.tar.gz",
+                    "sha256": "0b25218ae7b46a967db42f2a53721645b3d42874a65f9552ad16ce26d30f51f2"
+                }
+            ],
+            "build-commands": [
+                "python setup.py install --prefix=/app"
+            ]
+        },
+        {
             "name": "json-c",
             "sources": [
                 {
@@ -36,17 +51,6 @@
                     "url": "http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz",
                     "sha256": "7cf9f447ae7ed1c51722efc45e7f14418d15d7a1e143ac9f09a668999f4fc94d"
                 }
-            ]
-        },
-        {
-            "name": "libmypaint",
-            "sources": [
-                    {
-                        "type": "git",
-                        "url": "https://github.com/mypaint/libmypaint",
-                        "branch": "master",
-                        "sha256": "91f0a81dfc8f289bea7565b8230cd762c45b301c"
-                    }
             ]
         },
         {
@@ -110,8 +114,8 @@
                     }
             ],
             "build-commands": [
-                "python2 setup.py build",
-                "python2 setup.py managed_install --prefix /app"
+                "scons",
+                "scons prefix=/app install"
             ]
         }
     ]
