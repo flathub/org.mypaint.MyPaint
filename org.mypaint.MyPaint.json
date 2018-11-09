@@ -16,6 +16,7 @@
         "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
     "modules": [
+        "shared-modules/python2.7/python-2.7.15.json",
         {
             "name": "scons",
             "cleanup": [ "*" ],
@@ -28,7 +29,7 @@
                 }
             ],
             "build-commands": [
-                "python setup.py install --prefix=/app"
+                "python2 setup.py install --prefix=/app"
             ]
         },
         {
