@@ -1,7 +1,7 @@
 {
     "app-id": "org.mypaint.MyPaint",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.30",
+    "runtime-version": "3.34",
     "sdk": "org.gnome.Sdk",
     "command": "mypaint",
     "rename-desktop-file": "mypaint.desktop",
@@ -12,8 +12,7 @@
         "--share=ipc",
         "--socket=x11",
         "--filesystem=home",
-        "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
-        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+        "--metadata=X-DConf=migrate-path=/org/mypaint/MyPaint/"
     ],
     "modules": [
         "shared-modules/python2.7/python-2.7.15.json",
@@ -112,6 +111,10 @@
                     {
                         "type": "patch",
                         "path": "externalapp.patch"
+                    },
+                    {
+                        "type": "patch",
+                        "path": "appdata.patch"
                     }
             ],
             "build-commands": [

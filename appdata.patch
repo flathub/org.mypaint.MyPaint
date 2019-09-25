@@ -1,0 +1,27 @@
+diff --git a/desktop/mypaint.appdata.xml b/desktop/mypaint.appdata.xml
+index 77a60b2c..6d5cf88c 100644
+--- a/desktop/mypaint.appdata.xml
++++ b/desktop/mypaint.appdata.xml
+@@ -29,4 +29,22 @@
+     <screenshot type="default">https://cloud.githubusercontent.com/assets/1840562/8720135/b28edc2e-2b65-11e5-91ce-9d557bcd2c9e.png</screenshot>
+   </screenshots>
+   <update_contact>a.t.chadwick@gmail.com</update_contact>
++  <releases>
++    <release version="1.2.1" date="2017-01-21">
++      <description>
++        <p>Maintenance release of 1.2.x.</p>
++        <ul>
++          <li>Make sure layer clones get selected immediately</li>
++          <li>Fix hypersensitive tab drags</li>
++          <li>Fix accelerator mapping sort order</li>
++          <li>Fix exceptions when loading a corrupt thumbnail during thumb updates</li>
++          <li>Fix GTK removing the main canvas widget</li>
++          <li>BrushManager: use UUIDs for device brush names, backwards-compatibly</li>
++          <li>Fix repeated pixbuflist redraws</li>
++          <li>Wayland: remove references to cursors that don't exist</li>
++        </ul>
++      </description>
++    </release>
++  </releases>
++  <content_rating type="oars-1.1" />
+ </application>
