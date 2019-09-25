@@ -112,6 +112,10 @@
                     {
                         "type": "patch",
                         "path": "externalapp.patch"
+                    },
+                    {
+                        "type": "patch",
+                        "path": "appdata.patch"
                     }
             ],
             "build-commands": [
