@@ -6,8 +6,6 @@
     "command": "mypaint",
     "rename-desktop-file": "mypaint.desktop",
     "rename-appdata-file": "mypaint.appdata.xml",
-    "rename-icon": "mypaint",
-    "copy-icon": true,
     "finish-args": [
         "--share=ipc",
         "--socket=x11",
@@ -15,22 +13,7 @@
         "--metadata=X-DConf=migrate-path=/org/mypaint/MyPaint/"
     ],
     "modules": [
-        "shared-modules/python2.7/python-2.7.15.json",
-        {
-            "name": "scons",
-            "cleanup": [ "*" ],
-            "buildsystem": "simple",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://downloads.sourceforge.net/project/scons/scons/2.5.1/scons-2.5.1.tar.gz",
-                    "sha256": "0b25218ae7b46a967db42f2a53721645b3d42874a65f9552ad16ce26d30f51f2"
-                }
-            ],
-            "build-commands": [
-                "python2 setup.py install --prefix=/app"
-            ]
-        },
+        "shared-modules/intltool/intltool-0.51.json",
         {
             "name": "json-c",
             "sources": [
@@ -56,45 +39,49 @@
         {
             "name": "numpy",
             "buildsystem": "simple",
-            "sources": [
-                    {
-                        "type": "archive",
-                        "url": "https://github.com/numpy/numpy/releases/download/v1.14.3/numpy-1.14.3.tar.gz",
-                        "sha256": "cfcfc7a9a8ba4275c60a815c683d59ac5e7aa9362d76573b6cc4324ffb1235fa"
-                    }
-            ],
             "build-commands": [
-                "python2 setup.py build -j 4",
-                "python2 setup.py install --prefix /app"
+                "pip3 install --no-index --find-links=\"file://${PWD}\" --install-option=\"--prefix=${FLATPAK_DEST}\" numpy"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://github.com/numpy/numpy/releases/download/v1.16.5/numpy-1.16.5.zip",
+                    "sha256": "8bb452d94e964b312205b0de1238dd7209da452343653ab214b5d681780e7a0c"
+                }
             ]
-        },
+        },     
         {
             "name": "pycairo",
             "buildsystem": "simple",
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/pygobject/pycairo/releases/download/v1.13.1/pycairo-1.13.1.tar.gz",
-                    "sha256": "d8f58de67ddd01eda9e5112de57599b7d0154d71c9474821e98866c228794641"
+                    "url": "https://github.com/pygobject/pycairo/releases/download/v1.19.1/pycairo-1.19.1.tar.gz",
+                    "sha256": "2c143183280feb67f5beb4e543fd49990c28e7df427301ede04fc550d3562e84"
                 }
             ],
             "build-commands": [
-                "python2 setup.py build",
-                "python2 setup.py install --prefix /app"
+                "python3 setup.py build",
+                "python3 setup.py install --prefix /app"
             ]
         },
         {
-            "name": "pygobject",
-            "build-options" : {
-                "env": {
-                    "PYTHON": "python2"
-                }
-            },
+            "name": "libmypaint",
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/pygobject/3.25/pygobject-3.25.1.tar.xz",
-                    "sha256": "8728bb27078f7ee45c431ccbc237a58fb6d6eb1b7a0668bbe29eb107267bd736"
+                    "url": "https://github.com/mypaint/libmypaint/releases/download/v1.5.0/libmypaint-1.5.0.tar.xz",
+                    "sha256": "aba6e0526f9e4bead4a89c7c82084971b90c5128b50da77b0ac0f5ef27772b57"
+                }
+            ]
+        },
+        {
+            "name": "mypaint-brushes",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/mypaint/mypaint-brushes/releases/download/v2.0.2/mypaint-brushes-2.0.2.tar.xz",
+                    "sha256": "7984a74edef94571d872d0629b224abaa956a36f632f5c5516b33d22e49eb566"
                 }
             ]
         },
@@ -105,12 +92,8 @@
                     {
                         "type": "git",
                         "url": "https://github.com/mypaint/mypaint.git",
-                        "branch": "v1.2.1",
-                        "commit": "bcf5a28d38bbd586cc9d4cee223f849fa303864f"
-                    },
-                    {
-                        "type": "patch",
-                        "path": "externalapp.patch"
+                        "tag": "v2.0.0",
+                        "commit": "af5225a289565b8ca6ab3e85eea59f2f9850024a"
                     },
                     {
                         "type": "patch",
@@ -118,8 +101,8 @@
                     }
             ],
             "build-commands": [
-                "scons",
-                "scons prefix=/app install"
+                "python3 setup.py build",
+                "python3 setup.py managed_install --prefix=${FLATPAK_DEST}"
             ]
         }
     ]
