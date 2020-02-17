@@ -1,12 +1,28 @@
 diff --git a/desktop/mypaint.appdata.xml b/desktop/mypaint.appdata.xml
-index 77a60b2c..6d5cf88c 100644
+index 75b4bac0..513ef63a 100644
 --- a/desktop/mypaint.appdata.xml
 +++ b/desktop/mypaint.appdata.xml
-@@ -29,4 +29,22 @@
-     <screenshot type="default">https://cloud.githubusercontent.com/assets/1840562/8720135/b28edc2e-2b65-11e5-91ce-9d557bcd2c9e.png</screenshot>
+@@ -29,5 +29,37 @@
+       <image>https://cloud.githubusercontent.com/assets/1840562/8720135/b28edc2e-2b65-11e5-91ce-9d557bcd2c9e.png</image>
+     </screenshot>
    </screenshots>
-   <update_contact>a.t.chadwick@gmail.com</update_contact>
++  <content_rating type="oars-1.1" />
+   <update_contact>mypaintopensource@gmail.com</update_contact>
 +  <releases>
++    <release version="2.0.0" date="2020-02-15">
++      <description>
++        <p>MyPaint 2.0 adds a new layer mode and uses a different compositing method than before (by default, this is configurable), which means that you can create files in 2.0 that will not look the same when opened in earlier versions. Additionally, changes to the brush parameters means that you can create stroke data in 2.0 that cannot be safely used in earlier versions.</p>
++        <ul>
++          <li>Linear compositing and spectral blending (pigment).</li>
++          <li>Layer views.</li>
++          <li>Brush strokes dependent on view rotation and view zoom.</li>
++          <li>Additional symmetry modes: vertical, vertical+horizontal, rotational, snowflake.</li>
++          <li>Expanded flood fill functionality: offset, feather, gap detection and more.</li>
++          <li>New brush settings: offsets, gridmap, additional smudge settings, posterize, pigment.</li>
++          <li>New brush inputs: barrel rotation, base radius, zoom level, gridmap x/y, direction 360, attack angle.</li>
++        </ul>
++      </description>
++    </release>
 +    <release version="1.2.1" date="2017-01-21">
 +      <description>
 +        <p>Maintenance release of 1.2.x.</p>
@@ -23,5 +39,4 @@ index 77a60b2c..6d5cf88c 100644
 +      </description>
 +    </release>
 +  </releases>
-+  <content_rating type="oars-1.1" />
- </application>
+ </component>
