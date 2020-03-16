@@ -1,7 +1,7 @@
 {
     "app-id": "org.mypaint.MyPaint",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.34",
+    "runtime-version": "3.36",
     "sdk": "org.gnome.Sdk",
     "command": "mypaint",
     "rename-desktop-file": "mypaint.desktop",
@@ -49,7 +49,7 @@
                     "sha256": "8bb452d94e964b312205b0de1238dd7209da452343653ab214b5d681780e7a0c"
                 }
             ]
-        },     
+        },
         {
             "name": "pycairo",
             "buildsystem": "simple",
