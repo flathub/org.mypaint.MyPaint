@@ -11,14 +11,33 @@ index 75b4bac0..927a63c4 100644
    <name>MyPaint</name>
    <summary>Painting program for digital artists</summary>
    <project_license>GPL-2.0+</project_license>
-@@ -29,6 +29,39 @@
+@@ -29,6 +29,58 @@
        <image>https://cloud.githubusercontent.com/assets/1840562/8720135/b28edc2e-2b65-11e5-91ce-9d557bcd2c9e.png</image>
      </screenshot>
    </screenshots>
    <content_rating type="oars-1.1" />
    <update_contact>mypaintopensource@gmail.com</update_contact>
 +  <releases>
-+    <release version="2.0.1-rc.0" date="2020-05-16">
++    <release version="2.0.1" date="2020-05-29">
++      <description>
++        <p>For those who primarily use the 2.x mode (the default mode), this is an important upgrade. A color conversion function in the v2.0.0 release has an error that can (and usually will) cause image degradation over multiple save/load cycles. Big thanks to gwojcik for noticing and fixing this. The 1.x mode has not been affected by this.</p>
++        <ul>
++          <li>HSV/HCY brush dynamics in 2.x mode fixed.</li>
++          <li>Undo/Redo stack size made configurable and more efficient.</li>
++          <li>Undo/Redo stack default size increased to 40.</li>
++          <li>Rounding error when saving files in 2.x mode fixed.</li>
++          <li>Invalid l11n strings fixed.</li>
++          <li>Translated strings added/updated for several languages.</li>
++          <li>Dependency on intltool removed (still required for libmypaint).</li>
++          <li>Variables in l11n strings validated on build (xml tags are not validated yet, however).</li>
++          <li>libmypaint translations are now bound, making them work properly in the appimages.</li>
++          <li>OARS rating added to appdata (relevant for app-distribution software, but not much else).</li>
++          <li>A number of Py3 compatibility issues were fixed.</li>
++          <li>Svg icons fixed - some were previously considered invalid by librsvg >= 2.48.</li>
++          <li>Svg icon sizes reduced across the board.</li>
++          <li>Typos in documentation fixed (not user-facing typos).</li>
++        </ul>
++      </description>
 +    </release>
 +    <release version="2.0.0" date="2020-02-15">
 +      <description>
