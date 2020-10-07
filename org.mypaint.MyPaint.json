@@ -40,13 +40,13 @@
             "name": "numpy",
             "buildsystem": "simple",
             "build-commands": [
-                "pip3 install --no-index --find-links=\"file://${PWD}\" --install-option=\"--prefix=${FLATPAK_DEST}\" numpy"
+                "python3 setup.py build -j 1 install --prefix=/app"
             ],
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://github.com/numpy/numpy/releases/download/v1.16.5/numpy-1.16.5.zip",
-                    "sha256": "8bb452d94e964b312205b0de1238dd7209da452343653ab214b5d681780e7a0c"
+                    "url": "https://files.pythonhosted.org/packages/84/1e/ff467ac56bfeaea51d4a2e72d315c1fe440b20192fea7e460f0f248acac8/numpy-1.18.2.zip",
+                    "sha256": "e7894793e6e8540dbeac77c87b489e331947813511108ae097f1715c018b8f3d"
                 }
             ]
         },
