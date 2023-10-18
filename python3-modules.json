@@ -1,0 +1,35 @@
+{
+    "name": "python3-modules",
+    "buildsystem": "simple",
+    "build-commands": [],
+    "modules": [
+        {
+            "name": "numpy",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py build -j 1 install --prefix=/app"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/84/1e/ff467ac56bfeaea51d4a2e72d315c1fe440b20192fea7e460f0f248acac8/numpy-1.18.2.zip",
+                    "sha256": "e7894793e6e8540dbeac77c87b489e331947813511108ae097f1715c018b8f3d"
+                }
+            ]
+        },
+        {
+            "name": "pycairo",
+            "buildsystem": "simple",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/pygobject/pycairo/releases/download/v1.19.1/pycairo-1.19.1.tar.gz",
+                    "sha256": "2c143183280feb67f5beb4e543fd49990c28e7df427301ede04fc550d3562e84"
+                }
+            ],
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --root=/"
+            ]
+        }
+	]
+}
