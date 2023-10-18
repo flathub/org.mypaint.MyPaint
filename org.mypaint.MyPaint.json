@@ -91,7 +91,11 @@
                     },
                     {
                         "type": "patch",
-                        "path": "appdata.patch"
+                        "path": "patches/appdata.patch"
+                    },
+                    {
+                        "type": "patch",
+                        "path": "patches/python-311.patch"
                     }
             ],
             "build-commands": [
