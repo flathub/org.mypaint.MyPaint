@@ -12,6 +12,14 @@
         "--filesystem=home",
         "--metadata=X-DConf=migrate-path=/org/mypaint/MyPaint/"
     ],
+    "cleanup": [
+        "*.a",
+        "*.la",
+        "/include",
+        "/lib/cmake",
+        "/lib/pkgconfig",
+        "/share/pkgconfig"
+    ],
     "modules": [
         "shared-modules/intltool/intltool-0.51.json",
         {
