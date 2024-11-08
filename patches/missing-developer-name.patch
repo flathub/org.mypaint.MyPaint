@@ -1,0 +1,27 @@
+From 6f43b64f0e8f4aa4cec3a573c63e15b50b209920 Mon Sep 17 00:00:00 2001
+From: Sabri Ünal <yakushabb@gmail.com>
+Date: Fri, 8 Nov 2024 23:14:10 +0300
+Subject: [PATCH] fix missing developer name
+
+Also add vcs-browser and bugtracker URLs
+---
+ desktop/mypaint.appdata.xml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/desktop/mypaint.appdata.xml b/desktop/mypaint.appdata.xml
+index 51bf98f..208d3f4 100644
+--- a/desktop/mypaint.appdata.xml
++++ b/desktop/mypaint.appdata.xml
+@@ -24,6 +24,9 @@
+   </description>
+   <launchable type="desktop-id">mypaint.desktop</launchable>
+   <url type="homepage">http://mypaint.org/</url>
++  <url type="bugtracker">https://github.com/mypaint/mypaint/issues</url>
++  <url type="vcs-browser">https://github.com/mypaint/mypaint</url>
++  <developer_name>MyPaint Developers</developer_name>
+   <screenshots>
+     <screenshot type="default">
+       <image>https://cloud.githubusercontent.com/assets/1840562/8720135/b28edc2e-2b65-11e5-91ce-9d557bcd2c9e.png</image>
+--
+libgit2 1.7.2
+
