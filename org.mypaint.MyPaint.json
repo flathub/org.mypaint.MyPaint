@@ -103,6 +103,10 @@
                     },
                     {
                         "type": "patch",
+                        "path": "patches/missing-developer-name.patch"
+                    },
+                    {
+                        "type": "patch",
                         "path": "patches/python-311.patch"
                     }
             ],
