@@ -1,7 +1,7 @@
 {
     "app-id": "org.mypaint.MyPaint",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "46",
+    "runtime-version": "47",
     "sdk": "org.gnome.Sdk",
     "command": "mypaint",
     "rename-desktop-file": "mypaint.desktop",
@@ -47,11 +47,12 @@
         "python3-modules.json",
         {
             "name": "json-c",
+            "buildsystem": "cmake-ninja",
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/json-c/json-c/archive/json-c-0.13.1-20180305.tar.gz",
-                    "sha256": "5d867baeb7f540abe8f3265ac18ed7a24f91fe3c5f4fd99ac3caba0708511b90"
+                    "url": "https://github.com/json-c/json-c/archive/refs/tags/json-c-0.17-20230812.tar.gz",
+                    "sha256": "024d302a3aadcbf9f78735320a6d5aedf8b77876c8ac8bbb95081ca55054c7eb"
                 }
             ]
         },
