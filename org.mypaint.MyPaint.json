@@ -8,7 +8,8 @@
     "rename-appdata-file": "mypaint.appdata.xml",
     "finish-args": [
         "--share=ipc",
-        "--socket=x11",
+        "--socket=fallback-x11",
+        "--socket=wayland",
         "--filesystem=home",
         "--metadata=X-DConf=migrate-path=/org/mypaint/MyPaint/"
     ],
