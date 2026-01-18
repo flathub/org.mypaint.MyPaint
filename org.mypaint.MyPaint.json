@@ -1,7 +1,7 @@
 {
     "app-id": "org.mypaint.MyPaint",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "47",
+    "runtime-version": "49",
     "sdk": "org.gnome.Sdk",
     "command": "mypaint",
     "rename-desktop-file": "mypaint.desktop",
@@ -23,10 +23,14 @@
     "modules": [
         "shared-modules/intltool/intltool-0.51.json",
         {
-            "name": "open-blas",
+            "name": "openblas",
             "buildsystem": "cmake-ninja",
             "builddir": true,
+            "build-options": {
+                "cflags": "-std=gnu18"
+            },
             "config-opts": [
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
                 "-DBUILD_SHARED_LIBS=ON",
                 "-DBUILD_TESTING=OFF",
                 "-DNO_AFFINITY=ON",
@@ -48,6 +52,9 @@
         {
             "name": "json-c",
             "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+            ],
             "sources": [
                 {
                     "type": "archive",
@@ -100,15 +107,12 @@
                     },
                     {
                         "type": "patch",
-                        "path": "patches/appdata.patch"
-                    },
-                    {
-                        "type": "patch",
-                        "path": "patches/missing-developer-name.patch"
-                    },
-                    {
-                        "type": "patch",
-                        "path": "patches/python-311.patch"
+                        "paths": [
+                            "patches/appdata.patch",
+                            "patches/missing-developer-name.patch",
+                            "patches/python-311.patch",
+                            "patches/mypaint-fix_missing_attr.patch"
+                        ]
                     }
             ],
             "build-commands": [
