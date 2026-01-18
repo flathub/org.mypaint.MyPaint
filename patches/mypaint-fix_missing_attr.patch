@@ -1,0 +1,27 @@
+From 50905ab077b40802d74ac12e6cfa7cb64821cc47 Mon Sep 17 00:00:00 2001
+From: insane <shreyanshsaha19@proton.me>
+Date: Thu, 3 Apr 2025 16:26:13 +0530
+Subject: [PATCH] Fix attribute error by changing k.value_name to k.name
+
+k.value_name was resulting in attribute error.
+Changing it to k.name resolves it.
+
+References:
+https://github.com/mypaint/mypaint/issues/1292
+---
+ lib/glib.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/glib.py b/lib/glib.py
+index 5d4eef16c..865ec86ae 100644
+--- a/lib/glib.py
++++ b/lib/glib.py
+@@ -190,7 +190,7 @@ def init_user_dir_caches():
+         k = GLib.UserDirectory(i)
+         logger.debug(
+             "Init g_get_user_special_dir(%s): %r",
+-            k.value_name,
++            k.name,
+             get_user_special_dir(k),
+         )
+ 
